@@ -423,7 +423,7 @@ void RenderWindow::startNextFrame()
 
     //Backtgound color of the render window - dark grey -
     /**PLAY WITH THIS**/
-    VkClearColorValue clearColor = {{ 0.3, 0.3, 0.3, 1 }};
+    VkClearColorValue clearColor = {{ 0.7, 0.5, 0.0, 1 }};
 
     VkClearDepthStencilValue clearDS = { 1, 0 };
     VkClearValue clearValues[3];
@@ -489,7 +489,7 @@ void RenderWindow::startNextFrame()
 
     /********************************* Our draw call!: *********************************/
     // the number 3 is the number of vertices, so you have to change that if you add more!
-    // mDeviceFunctions->vkCmdDraw(cb, 3, 1, 0, 0);
+    // mDeviceFunctions->vkCmdDraw("commandBuffer-reference", 3 "#of verts", 1, 0, 0);
 
     mDeviceFunctions->vkCmdDraw(cmdBuf, mTriangle.getVertices().size(), 1, 0, 0);
 
