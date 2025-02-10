@@ -408,7 +408,7 @@ void RenderWindow::initSwapChainResources()
     mProj.perspective(25.0f,          sz.width() / (float) sz.height(), 0.01f, 100.0f);
     //Camera is -4 away from origo camera ASDASD
     /**PLAY WITH THIS**/
-    mProj.translate(0, 0, -30);
+    mProj.translate(0, 0, -5);
 
     //Flip projection because of Vulkan's -Y axis
     mProj.scale(1.0f, -1.0f, 1.0);
@@ -494,10 +494,10 @@ void RenderWindow::startNextFrame()
     for (auto it=mObjects.begin(); it!=mObjects.end(); it++)
     {
         mDeviceFunctions->vkCmdBindVertexBuffers(cmdBuf, 0, 1, &(*it)->mBuffer, &vbOffset);
-        setModelMatrix(mProjectionMatrix * (*it)->mMatrix);
+        //setModelMatrix(mProjectionMatrix * (*it)->mMatrix);
         mDeviceFunctions->vkCmdDraw(cmdBuf, (*it)->mVertices.size(), 1, 0, 0);
     }
-
+    //mDeviceFunctions->vkCmdDraw(cmdBuf, (VkTriangle)->mVertices.size(),1,0,0);
 
     mDeviceFunctions->vkCmdEndRenderPass(cmdBuf);
 

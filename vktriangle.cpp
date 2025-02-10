@@ -7,8 +7,8 @@
 VkTriangle::VkTriangle() : VisualObject()
 {
 
-   mVertices = getVertices1();
-    //mVertices = getVertices2();
+   //mVertices = getVertices1();
+    mVertices = getVertices2();
     //mVertices = getVertices3();
 
 }

@@ -23,11 +23,11 @@ void VulkanWindow::keyPressEvent(QKeyEvent *event)
         mIndex = 1;
     if (event->key() == Qt::Key_A)
     {
-        dynamic_cast<RenderWindow*>(mRenderWindow)->mObjects.at(mIndex)->move(-0.1f);
+        //dynamic_cast<RenderWindow*>(mRenderWindow)->mObjects.at(mIndex)->move(-0.1f);
     }
     if(event->key() == Qt::Key_S)
     {
-        dynamic_cast<RenderWindow*>(mRenderWindow)->mObjects.at(mIndex)->scale(0.9f);
+        //dynamic_cast<RenderWindow*>(mRenderWindow)->mObjects.at(mIndex)->scale(0.9f);
     }
     if (event->key() == Qt::Key_Escape)
     {
@@ -35,11 +35,11 @@ void VulkanWindow::keyPressEvent(QKeyEvent *event)
     }
     if(event->key() == Qt::Key_T)
     {
-        dynamic_cast<RenderWindow*>(mRenderWindow)->mCamera.translate(.0f, 0.0f, 1.0f);
+       // dynamic_cast<RenderWindow*>(mRenderWindow)->mCamera.translate(.0f, 0.0f, 1.0f);
     }
     if(event->key() == Qt::Key_R)
     {
-        dynamic_cast<RenderWindow*>(mRenderWindow)->mCamera.rotate(45, 0.0f, 0.0f, 1.0f);
+       // dynamic_cast<RenderWindow*>(mRenderWindow)->mCamera.rotate(45, 0.0f, 0.0f, 1.0f);
     }
 
     if (event->key() == Qt::Key_A)
