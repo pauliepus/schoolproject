@@ -493,9 +493,6 @@ void RenderWindow::startNextFrame()
 
     mDeviceFunctions->vkCmdDraw(cmdBuf, mTriangle.getVertices().size(), 1, 0, 0);
 
-
-    //mDeviceFunctions->vkCmdDraw(cmdBuf, VkTriangle.mVertices().size(),1,0,0);
-
     mDeviceFunctions->vkCmdEndRenderPass(cmdBuf);
 
     /*QVulkanWindow subclasses queue their draw calls in their reimplementation of
