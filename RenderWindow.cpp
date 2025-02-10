@@ -3,6 +3,7 @@
 #include <QFile>
 
 
+
 // Hardcoded mesh for now. Will be put in its own class soon!
 // NB 1: Vulkan's near/far plane (Z axis) is at 0/1 instead of -1/1, as in OpenGL!
 // NB 2: Vulkan Y is negated in clip space so we fix that when making the projection matrix
@@ -408,7 +409,7 @@ void RenderWindow::initSwapChainResources()
     mProj.perspective(25.0f,          sz.width() / (float) sz.height(), 0.01f, 100.0f);
     //Camera is -4 away from origo camera ASDASD
     /**PLAY WITH THIS**/
-    mProj.translate(0, 0, -5);
+    mProj.translate(0, 0, -20);
 
     //Flip projection because of Vulkan's -Y axis
     mProj.scale(1.0f, -1.0f, 1.0);
@@ -489,15 +490,11 @@ void RenderWindow::startNextFrame()
     /********************************* Our draw call!: *********************************/
     // the number 3 is the number of vertices, so you have to change that if you add more!
     // mDeviceFunctions->vkCmdDraw(cb, 3, 1, 0, 0);
-    // mDeviceFunctions->vkCmdDraw(cmdBuf, mTriangle.getVertices().size(), 1, 0, 0);
 
-    for (auto it=mObjects.begin(); it!=mObjects.end(); it++)
-    {
-        mDeviceFunctions->vkCmdBindVertexBuffers(cmdBuf, 0, 1, &(*it)->mBuffer, &vbOffset);
-        //setModelMatrix(mProjectionMatrix * (*it)->mMatrix);
-        mDeviceFunctions->vkCmdDraw(cmdBuf, (*it)->mVertices.size(), 1, 0, 0);
-    }
-    //mDeviceFunctions->vkCmdDraw(cmdBuf, (VkTriangle)->mVertices.size(),1,0,0);
+    mDeviceFunctions->vkCmdDraw(cmdBuf, mTriangle.getVertices().size(), 1, 0, 0);
+
+
+    //mDeviceFunctions->vkCmdDraw(cmdBuf, VkTriangle.mVertices().size(),1,0,0);
 
     mDeviceFunctions->vkCmdEndRenderPass(cmdBuf);
 
